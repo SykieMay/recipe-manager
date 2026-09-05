@@ -1,9 +1,9 @@
 import { useState } from "react";
 // TODO: import your components once you build them
-// import RecipeForm from "./components/RecipeForm";
-// import CategoryFilter from "./components/CategoryFilter";
-// import RecipeList from "./components/RecipeList";
-// import SummaryBar from "./components/SummaryBar";
+import RecipeForm from "./components/RecipeForm";
+import CategoryFilter from "./components/CategoryFilter";
+import RecipeList from "./components/RecipeList";
+import SummaryBar from "./components/SummaryBar";
 
 const STARTER_RECIPES = [
   { id: 1, title: "Chicken Adobo", category: "Dinner", time: 45, favorite: false },
