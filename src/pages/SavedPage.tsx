@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { useCategories } from "@/features/meals/meals.hooks";
-import { useSavedRecipes } from "@/features/recipes/recipes.hooks";
-import type { SavedRecipe } from "@/features/recipes/recipes.types";
-import CategoryFilter from "@/components/CategoryFilter";
-import RecipeList from "@/components/RecipeList";
-import SummaryBar from "@/components/SummaryBar";
-import EditRecipeForm from "@/components/EditRecipeForm";
+import { useCategories } from "../features/meals/meals.hooks";
+import { useSavedRecipes } from "../features/recipes/recipes.hooks";
+import type { SavedRecipe } from "../features/recipes/recipes.types";
+import CategoryFilter from "../components/CategoryFilter";
+import RecipeList from "../components/RecipeList";
+import SummaryBar from "../components/SummaryBar";
+import EditRecipeForm from "../components/EditRecipeForm";
+
 
 export default function SavedPage() {
   const [filter, setFilter] = useState("All");

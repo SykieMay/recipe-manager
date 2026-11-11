@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { useAuth } from "@/features/auth/auth.hooks";
+import { useAuth } from "../features/auth/auth.hooks";
 
 export default function Layout({ savedCount }: { savedCount: number }) {
   const { user, isLoggedIn, logout } = useAuth();

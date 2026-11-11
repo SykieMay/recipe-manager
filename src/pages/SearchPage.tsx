@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { useSearchMeals } from "@/features/meals/meals.hooks";
-import { useSavedRecipes } from "@/features/recipes/recipes.hooks";
-import SearchBar from "@/components/SearchBar";
-import MealCard from "@/components/MealCard";
+import { useSearchMeals } from "../features/meals/meals.hooks";
+import { useSavedRecipes } from "../features/recipes/recipes.hooks";
+import SearchBar from "../components/SearchBar";
+import MealCard from "../components/MealCard";
+
 
 export default function SearchPage() {
   const [term, setTerm] = useState("");

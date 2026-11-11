@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate, useLocation, Navigate } from "react-router-dom";
-import { useAuth } from "@/features/auth/auth.hooks";
+import { useAuth } from "../features/auth/auth.hooks";
 
 export default function LoginPage() {
   const [name, setName] = useState("");

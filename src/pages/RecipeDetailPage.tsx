@@ -1,6 +1,6 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { useMeal } from "@/features/meals/meals.hooks";
-import { useSavedRecipes } from "@/features/recipes/recipes.hooks";
+import { useMeal } from "../features/meals/meals.hooks";
+import { useSavedRecipes } from "../features/recipes/recipes.hooks";
 
 export default function RecipeDetailPage() {
   const { mealId } = useParams<{ mealId: string }>();
