@@ -1,4 +1,4 @@
-import { mealdb } from "@/lib/api";
+import { mealdb } from "../../lib/api";
 import type { Meal, Recipe, SearchResponse, CategoriesResponse } from "./meals.types";
 
 export function toRecipe(meal: Meal): Recipe {

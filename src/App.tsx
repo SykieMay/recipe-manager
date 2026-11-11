@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { useSearchMeals, useCategories } from "@/features/meals/meals.hooks";
-import { useSavedRecipes } from "@/features/recipes/recipes.hooks";
+import { useSearchMeals, useCategories } from "./features/meals/meals.hooks";
+import { useSavedRecipes } from "./features/recipes/recipes.hooks";
 import type { SavedRecipe } from "@/features/recipes/recipes.types";
-import SearchBar from "@/components/SearchBar";
-import MealCard from "@/components/MealCard";
-import CategoryFilter from "@/components/CategoryFilter";
-import RecipeList from "@/components/RecipeList";
-import SummaryBar from "@/components/SummaryBar";
-import EditRecipeForm from "@/components/EditRecipeForm";
+import SearchBar from "./components/SearchBar";
+import MealCard from "./components/MealCard";
+import CategoryFilter from "./components/CategoryFilter";
+import RecipeList from "./components/RecipeList";
+import SummaryBar from "./components/SummaryBar";
+import EditRecipeForm from "./components/EditRecipeForm";
 
 export default function App() {
   const [term, setTerm] = useState("");

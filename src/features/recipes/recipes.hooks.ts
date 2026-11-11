@@ -5,12 +5,8 @@ import type { SavedRecipe } from "./recipes.types";
 const KEY = ["recipes"] as const;
 
 export function useSavedRecipes() {
-  const create = useMutation({ mutationFn: createRecipe, onSuccess: invalidate });
-  const update = useMutation({ mutationFn: updateRecipe, onSuccess: invalidate });
   const queryClient = useQueryClient();
   const invalidate = () => queryClient.invalidateQueries({ queryKey: KEY });
-  
-
 
   // =========================================================================
   // WORKED EXAMPLE — one read and one write, end to end.
@@ -30,14 +26,14 @@ export function useSavedRecipes() {
   // YOUR WORK STARTS HERE
   // =========================================================================
 
-  // TODO 8 — Save a catalogue result.
+  // Task 6 — Save a catalogue result.
   // Same shape as `remove` above: mutationFn, then invalidate on success.
-  const create = useMutation({ mutationFn: createRecipe });
+  const create = useMutation({ mutationFn: createRecipe, onSuccess: invalidate });
 
-  // TODO 11 — Save an edit (time + notes). Same shape again.
-  const update = useMutation({ mutationFn: updateRecipe });
+  // Task 6 — Save an edit (time + notes). Same shape again.
+  const update = useMutation({ mutationFn: updateRecipe, onSuccess: invalidate });
 
-  // TODO 12 — The favourite toggle, OPTIMISTICALLY.
+  // Task 9 — The favourite toggle, OPTIMISTICALLY.
   //
   // This is the one mutation that must NOT wait for the server. A star that
   // takes 800ms to fill feels broken, so we update the cache first and roll
@@ -63,7 +59,21 @@ export function useSavedRecipes() {
   // To prove the rollback works, see "How to prove your rollback works" in the
   // handout. Do NOT just stop json-server — the list unmounts and you will see
   // nothing.
-  const favorite = useMutation({ mutationFn: updateRecipe, onSettled: invalidate });
+  const favorite = useMutation({
+    mutationFn: updateRecipe,
+    onMutate: async ({ id, favorite }) => {
+      await queryClient.cancelQueries({ queryKey: KEY });
+      const previous = queryClient.getQueryData<SavedRecipe[]>(KEY);
+      queryClient.setQueryData<SavedRecipe[]>(KEY, (old = []) =>
+        old.map((r) => (r.id === id ? { ...r, favorite: Boolean(favorite) } : r))
+      );
+      return { previous };
+    },
+    onError: (_e, _v, context) => {
+      queryClient.setQueryData(KEY, context?.previous);
+    },
+    onSettled: invalidate,
+  });
 
   const saved = query.data ?? [];
 
@@ -75,7 +85,7 @@ export function useSavedRecipes() {
     create,
     update,
     remove,
-    // TODO 12b — compute the NEW value here. Do not hand `favorite.mutate`
+    // Task 9b — compute the NEW value here. Do not hand `favorite.mutate`
     // straight to RecipeCard: it passes the whole recipe, so the PATCH body
     // would carry every field AND `favorite` would still hold its old value,
     // so the star would never toggle.
