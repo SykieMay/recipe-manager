@@ -26,6 +26,7 @@ export async function searchMeals(query: string): Promise<Recipe[]> {
   return (data.meals ?? []).map(toRecipe);
 }
 
+
 export async function getCategories(): Promise<string[]> {
   const { data } = await mealdb.get<CategoriesResponse>("/categories.php");
   return (data.categories ?? []).map((c) => c.strCategory);
