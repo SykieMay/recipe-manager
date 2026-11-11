@@ -19,6 +19,11 @@ export const deleteRecipe = async (id: number): Promise<{ id: number }> => {
   return { id };
 };
 
+export const createRecipe = async (recipe: NewRecipe): Promise<SavedRecipe> =>
+  (await api.post<SavedRecipe>("/recipes", recipe)).data;
+
+export const updateRecipe = async ({ id, ...patch }: RecipePatch): Promise<SavedRecipe> =>
+  (await api.patch<SavedRecipe>(`/recipes/${id}`, patch)).data;
 // TODO 4 — Create.
 //
 //   POST /recipes  + the recipe object as the body
