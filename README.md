@@ -1,3 +1,5 @@
+https://recipe-manager-khaki.vercel.app
+
 # Recipe Manager — Starter Template
 
 Starter scaffold for **PD 2 Major Assessment 1 — Interactive Recipe Manager**. Vite, React 19, Tailwind CSS, and DaisyUI are all pre-installed and configured. Your job is to fill in the TODO comments across `src/App.jsx` and `src/components/`.
@@ -71,3 +73,4 @@ Refer to the **Requirements Checklist** in the assessment handout. Every box mus
 4. Submit the repo URL through the class submission channel.
 
 Good luck!
+
