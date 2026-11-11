@@ -5,8 +5,12 @@ import type { SavedRecipe } from "./recipes.types";
 const KEY = ["recipes"] as const;
 
 export function useSavedRecipes() {
+  const create = useMutation({ mutationFn: createRecipe, onSuccess: invalidate });
+  const update = useMutation({ mutationFn: updateRecipe, onSuccess: invalidate });
   const queryClient = useQueryClient();
   const invalidate = () => queryClient.invalidateQueries({ queryKey: KEY });
+  
+
 
   // =========================================================================
   // WORKED EXAMPLE — one read and one write, end to end.
