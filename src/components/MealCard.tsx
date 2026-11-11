@@ -11,6 +11,7 @@ interface MealCardProps {
 // only a mealId. That is why the prop is `Recipe` and not `SavedRecipe`.
 export default function MealCard({ meal, onSave, isSaved, isSaving }: MealCardProps) {
   const { title, category, thumb, ingredients } = meal;
+  const label = isSaved ? "Saved" : isSaving ? "Saving..." : "Save";
 
   return (
     <div className="card bg-base-100 shadow">
@@ -25,7 +26,13 @@ export default function MealCard({ meal, onSave, isSaved, isSaving }: MealCardPr
             {ingredients.length} ingredients
           </span>
         </div>
-
+        <button
+          className={`btn btn-sm ${isSaved ? "btn-disabled" : "btn-primary"}`}
+          onClick={() => onSave(meal)}
+          disabled={isSaved || isSaving}
+        >
+          {label}
+        </button>
         {/* TODO 9 — The Save button.
             Three states, and all three matter:
               - already saved  -> disabled, label "Saved"
