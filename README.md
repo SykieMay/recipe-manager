@@ -1,4 +1,5 @@
 https://recipe-manager-khaki.vercel.app
+<img width="1917" height="970" alt="Screenshot 2026-11-11 200711" src="https://github.com/user-attachments/assets/2429cc43-e9c8-49a9-b6fe-9c585acb5a7f" />
 
 # Recipe Manager — Starter Template
 
